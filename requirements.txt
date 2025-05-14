@@ -1,0 +1,7 @@
+numpy==1.22
+scipy==1.7
+scikit-learn==1.0
+matplotlib==3.5
+pybinding==0.9.5
+pytest==7.1
+pytest-cov==3.0
