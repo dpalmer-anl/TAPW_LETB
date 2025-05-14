@@ -508,8 +508,8 @@ def get_moire_transfer_mat(bm_ham,glist,m_basis_vecs,valley=1,basis="continuum")
     return np.array(T1), np.array(T2), np.array(T3), np.array(g_T1), np.array(g_T2), np.array(g_T3)
 
 if __name__=="__main__":
-    n_moire = [4] #16,20,30,33,35]
-    n_moire = [30] #30,32,34,36,48
+    
+    n_moire = [30,32,34,36,48]
     n_g= 5
     n_k = 10
     engine=EngineType.TBPLW
@@ -517,8 +517,8 @@ if __name__=="__main__":
     valley=ValleyType.VALLEYK1
     valleyint = 1
 
-    models = ["LETB"]
-    """for n in n_moire:
+    models = ["LETB","MK"]
+    for n in n_moire:
         (_, m_basis_vecs, high_symm_pnts) = mset._set_moire(n)
         # set up g list
         o_g_vec_list = mgk.set_g_vec_list(n_g, m_basis_vecs)
@@ -579,7 +579,7 @@ if __name__=="__main__":
             plt.colorbar()
             plt.title("Relaxed, "+r"$\theta=$"+str(theta))
             plt.savefig("figures/BM_Ham_"+m+"_relaxed_theta_"+str(theta)+".png")
-            plt.clf()"""
+            plt.clf()
 
     cutoff = 5.29
     for n in n_moire:
@@ -591,7 +591,7 @@ if __name__=="__main__":
 
             plot_bands(evals,kline,erange=0.1,title="unrelaxed "+r"$\theta=$"+str(theta),figname = "figures/BM_Ham_"+m+"_unrelaxed_theta_"+str(theta)+"_bands.png")
 
-            """results = TB_solve(m,n, n_g, 50, datatype=DataType.RELAX,disp=True, engine=engine, valley=valley)
+            results = TB_solve(m,n, n_g, 50, datatype=DataType.RELAX,disp=True, engine=engine, valley=valley)
             evals = results["emesh"].T
             kline = results["kline"]
-            plot_bands(evals,kline,title="relaxed "+r"$\theta=$"+str(theta),figname = "figures/BM_Ham_"+m+"_relaxed_theta_"+str(theta)+"_bands.png")"""
+            plot_bands(evals,kline,title="relaxed "+r"$\theta=$"+str(theta),figname = "figures/BM_Ham_"+m+"_relaxed_theta_"+str(theta)+"_bands.png")
